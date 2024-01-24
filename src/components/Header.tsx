@@ -16,7 +16,7 @@ export const Header = () => {
   // const [searchTerm, setSearchTerm] = useState<string>("");
 
   return (
-    <header className='p-4 grid grid-cols-[auto_1fr] items-center gap-4 gap-y-3 border border-b-gray-600'>
+    <header className='p-4 grid grid-cols-[auto_1fr] items-center gap-4 gap-y-3 border border-b-gray-200'>
       <h1 className='font-semibold text-xl md:text-xl'>Dashboard</h1>
       {/* <div className='flex'>
         <div className='w-fit p-2 flex items-center gap-2 border border-gray-600 bg-white rounded-full'>

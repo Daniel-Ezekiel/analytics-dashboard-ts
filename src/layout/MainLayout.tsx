@@ -1,4 +1,8 @@
+import { BoxTick, Coin1, I3DRotate, ShoppingCart } from "iconsax-react";
 import { Header } from "../components/Header";
+import { SummaryCard } from "../components/SummaryCard";
+import { Link, MemoryRouter } from "react-router-dom";
+import { PlatformDetails } from "../components/PlatformDetails";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -13,6 +17,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
         <Header />
         <main className='mt-6 grid p-4 gap-4'>
           {children}
+
           <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl'>
             <h2 className='font-semibold text-lg'>Sales Trend</h2>
             <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm'>
@@ -27,8 +32,101 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </div>
 
             <div className='col-span-full'>
-              <img src='./chart.png' alt='Sales chart' className='h-full' />
+              <img
+                src='./chart.png'
+                alt='Sales chart'
+                className='h-auto w-full'
+              />
             </div>
+          </section>
+
+          <section className='grid gap-4 sm:grid-cols-2'>
+            <SummaryCard
+              cardTitle='Total Order'
+              cardValue={350}
+              cardRate={23.5}
+              isRatePositive={true}
+              chartImageURL='./card-chart-1.png'
+            >
+              <BoxTick size='24' color='#34caa5' variant='Bulk' />
+            </SummaryCard>
+
+            <SummaryCard
+              cardTitle='Total Refund'
+              cardValue={270}
+              cardRate={23.5}
+              isRatePositive={false}
+              chartImageURL='./card-chart-2.png'
+            >
+              <I3DRotate size='24' color='#34caa5' variant='Bulk' />
+            </SummaryCard>
+
+            <SummaryCard
+              cardTitle='Average Sales'
+              cardValue={1567}
+              cardRate={23.5}
+              isRatePositive={false}
+              chartImageURL='./card-chart-2.png'
+            >
+              <ShoppingCart size='24' color='#34caa5' variant='Bulk' />
+            </SummaryCard>
+
+            <SummaryCard
+              cardTitle='Total Income'
+              cardValue={"$350.000"}
+              cardRate={23.5}
+              isRatePositive={true}
+              chartImageURL='./card-chart-1.png'
+            >
+              <Coin1 size='24' color='#34caa5' variant='Bulk' />
+            </SummaryCard>
+          </section>
+
+          <section className='p-4 bg-white rounded-xl grid gap-4'>
+            <div className='flex justify-between'>
+              <h2>Top Platform</h2>
+              <MemoryRouter>
+                <Link to={""} className='font-medium text-green'>
+                  See all
+                </Link>
+              </MemoryRouter>
+            </div>
+
+            <PlatformDetails
+              platformName='Book Bazaar'
+              barWidth={60}
+              barColor='#6C63FF'
+              currency='$'
+              platformIncome={"2,500,000"}
+              platformRate={15}
+            />
+
+            <PlatformDetails
+              platformName='Artisan Aisle'
+              barWidth={45}
+              barColor='#54C5EB'
+              currency='$'
+              platformIncome={"1,800,000"}
+              platformRate={10}
+            />
+
+            <PlatformDetails
+              platformName='Toy Troop'
+              barWidth='35'
+              barColor='#FFB74A'
+              currency='$'
+              platformIncome={"1,200,000"}
+              platformRate={8}
+            />
+
+            <PlatformDetails
+              platformName='XStore'
+              barWidth='35'
+              barColor='#FF4A55'
+              currency='$'
+              platformIncome={"800,000"}
+              platformRate={6}
+            />
           </section>
         </main>
         {/* <footer>Footer</footer> */}
