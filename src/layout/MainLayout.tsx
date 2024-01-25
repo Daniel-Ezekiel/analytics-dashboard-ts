@@ -12,13 +12,13 @@ interface MainLayoutProps {
 export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
   return (
     <>
-      <div className='min-h-screen w-screen bg-gray-100 text-dark dark:bg-[#242424] dark:text-white transition-all ease-in-out duration-300 text-base'>
+      <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] dark:text-white transition-all ease-in-out duration-300 text-base'>
         {!showDashboard && <header>Dash</header>}
         <Header />
-        <main className='mt-6 grid p-4 gap-4'>
+        <main className='mt-4 grid p-4 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-8'>
           {children}
 
-          <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl'>
+          <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7'>
             <h2 className='font-semibold text-lg'>Sales Trend</h2>
             <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm'>
               <span>Sort by:</span>
@@ -40,7 +40,9 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </div>
           </section>
 
-          <section className='grid gap-4 sm:grid-cols-2'>
+          <section className='col-span-full lg:col-span-7'></section>
+
+          <section className='grid gap-4 min-[425px]:grid-cols-2 sm:grid-cols-2 lg:col-span-5 lg:col-start-8 lg:row-start-1'>
             <SummaryCard
               cardTitle='Total Order'
               cardValue={350}
@@ -82,7 +84,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </SummaryCard>
           </section>
 
-          <section className='p-4 bg-white rounded-xl grid gap-4'>
+          <section className='p-4 bg-white rounded-xl flex flex-col gap-4 lg:col-span-5 lg:col-start-8'>
             <div className='flex justify-between'>
               <h2>Top Platform</h2>
               <MemoryRouter>
