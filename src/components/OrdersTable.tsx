@@ -4,6 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import { DocumentDownload } from "iconsax-react";
 import { Link, MemoryRouter } from "react-router-dom";
 // import Paper from "@mui/material/Paper";
 
@@ -185,7 +186,17 @@ export default function BasicTable() {
                 }}
               >
                 <MemoryRouter>
-                  <Link to='/'>View</Link>
+                  <Link
+                    to='/'
+                    className='flex items-center gap-2 text-dark hover:text-green hover:underline'
+                  >
+                    <DocumentDownload
+                      size='24'
+                      color='#292d32'
+                      variant='Outline'
+                    />
+                    View
+                  </Link>
                 </MemoryRouter>
               </TableCell>
             </TableRow>
