@@ -3,6 +3,7 @@ import { Header } from "../components/Header";
 import { SummaryCard } from "../components/SummaryCard";
 import { Link, MemoryRouter } from "react-router-dom";
 import { PlatformDetails } from "../components/PlatformDetails";
+import OrdersTable from "../components/OrdersTable";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -15,7 +16,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
       <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] dark:text-white transition-all ease-in-out duration-300 text-base'>
         {!showDashboard && <header>Dash</header>}
         <Header />
-        <main className='mt-4 grid p-4 gap-4 md:grid-cols-2 lg:grid-cols-12 lg:gap-8'>
+        <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
           {children}
 
           <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7'>
@@ -33,14 +34,26 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
 
             <div className='col-span-full'>
               <img
-                src='./chart.png'
+                src='/chart.png'
                 alt='Sales chart'
                 className='h-auto w-full'
               />
             </div>
           </section>
 
-          <section className='col-span-full lg:col-span-7'></section>
+          <section className='p-4 bg-white rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto'>
+            <div className='flex justify-between'>
+              <h2 className='font-semibold'>Last orders</h2>
+              <MemoryRouter>
+                <Link to={""} className='font-medium text-green'>
+                  See all
+                </Link>
+              </MemoryRouter>
+            </div>
+
+            {/* <div><OrdersTable /></div> */}
+            <OrdersTable />
+          </section>
 
           <section className='grid gap-4 min-[425px]:grid-cols-2 sm:grid-cols-2 lg:col-span-5 lg:col-start-8 lg:row-start-1'>
             <SummaryCard
@@ -84,9 +97,9 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </SummaryCard>
           </section>
 
-          <section className='p-4 bg-white rounded-xl flex flex-col gap-4 lg:col-span-5 lg:col-start-8'>
+          <section className='p-4 bg-white rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8'>
             <div className='flex justify-between'>
-              <h2>Top Platform</h2>
+              <h2 className='font-semibold'>Top Platform</h2>
               <MemoryRouter>
                 <Link to={""} className='font-medium text-green'>
                   See all
