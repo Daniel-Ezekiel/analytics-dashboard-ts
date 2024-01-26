@@ -14,6 +14,7 @@ import { formatDate } from "../../util/formatDate";
 import { Sidebar } from "../components/Sidebar";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { motion } from "framer-motion";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -23,6 +24,17 @@ interface MainLayoutProps {
 export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
   const { theme } = useContext(ThemeContext);
 
+  const sectionFadeInVariant = {
+    unhidden: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.75,
+      },
+    },
+    hidden: { opacity: 0, y: "-3rem" },
+  };
+
   return (
     <>
       <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] transition-all ease-in-out duration-300 text-base pb-[8rem] md:pb-3'>
@@ -31,18 +43,28 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
           <Header />
           <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
             {children}
-            <span className='place-self-end flex items-center gap-2 md:col-span-full lg:hidden dark:text-white'>
+            <motion.span
+              variants={sectionFadeInVariant}
+              initial='hidden'
+              animate='unhidden'
+              className='place-self-end flex items-center gap-2 md:col-span-full lg:hidden dark:text-white'
+            >
               <Calendar1
                 size='24'
                 color={`${theme === "dark" ? "#fff" : "#292d32"}`}
                 variant='Outline'
               />
               {formatDate()}
-            </span>
+            </motion.span>
 
-            <section className='flex flex-wrap justify-between items-center gap-4 p-3 bg-white border border-gray-200 rounded-xl lg:col-span-7 dark:bg-black dark:text-white'>
+            <motion.section
+              variants={sectionFadeInVariant}
+              initial='hidden'
+              animate='unhidden'
+              className='flex flex-wrap justify-between items-start gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:text-white'
+            >
               <h2 className='font-semibold text-lg'>Sales Trend</h2>
-              <div className='flex items-center gap-2 font-medium text-sm'>
+              <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm lg:place-self-start'>
                 <span>Sort by:</span>
                 <select
                   name='sort-value'
@@ -53,16 +75,21 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
                 </select>
               </div>
 
-              <div className='w-full'>
+              <div className='w-full h-full'>
                 <img
                   src='/chart.png'
                   alt='Sales chart'
                   className='h-auto w-full'
                 />
               </div>
-            </section>
+            </motion.section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black'>
+            <motion.section
+              variants={sectionFadeInVariant}
+              initial='hidden'
+              animate='unhidden'
+              className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black'
+            >
               <div className='flex justify-between'>
                 <h2 className='font-semibold dark:text-white'>Last orders</h2>
                 <MemoryRouter>
@@ -73,9 +100,14 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               </div>
 
               <OrdersTable />
-            </section>
+            </motion.section>
 
-            <section className='grid gap-4 min-[425px]:grid-cols-2 sm:grid-cols-2 lg:col-span-5 lg:col-start-8 lg:row-start-1'>
+            <motion.section
+              variants={sectionFadeInVariant}
+              initial='hidden'
+              animate='unhidden'
+              className='grid gap-4 min-[425px]:grid-cols-2 sm:grid-cols-2 lg:col-span-5 lg:col-start-8 lg:row-start-1'
+            >
               <SummaryCard
                 cardTitle='Total Order'
                 cardValue={350}
@@ -115,9 +147,14 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               >
                 <Coin1 size='24' color='#34caa5' variant='Bulk' />
               </SummaryCard>
-            </section>
+            </motion.section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black'>
+            <motion.section
+              variants={sectionFadeInVariant}
+              initial='hidden'
+              animate='unhidden'
+              className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black'
+            >
               <div className='flex justify-between'>
                 <h2 className='font-semibold dark:text-white'>Top Platform</h2>
                 <MemoryRouter>
@@ -162,7 +199,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
                 platformIncome={"800,000"}
                 platformRate={6}
               />
-            </section>
+            </motion.section>
           </main>
         </div>
         {/* <footer>Footer</footer> */}

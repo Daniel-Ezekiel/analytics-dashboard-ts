@@ -7,6 +7,7 @@ import {
   SearchNormal1,
 } from "iconsax-react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { motion } from "framer-motion";
 
 export const Header = () => {
   const { theme } = useContext(ThemeContext);
@@ -28,8 +29,23 @@ export const Header = () => {
     }
   };
 
+  const headerFadeInVariant = {
+    unhidden: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        delay: 0.4,
+      },
+    },
+    hidden: { opacity: 0, y: "-3rem" },
+  };
+
   return (
-    <header>
+    <motion.header
+      variants={headerFadeInVariant}
+      initial='hidden'
+      animate='unhidden'
+    >
       <nav className='relative p-4 flex justify-between items-center gap-4 border-b border-b-gray-200'>
         <h1 className='font-semibold text-xl md:text-xl dark:text-white'>
           Dashboard
@@ -89,6 +105,6 @@ export const Header = () => {
           </div>
         </div>
       </nav>
-    </header>
+    </motion.header>
   );
 };

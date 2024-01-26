@@ -13,6 +13,7 @@ import {
 } from "iconsax-react";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import { motion } from "framer-motion";
 
 export const Sidebar = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -21,8 +22,24 @@ export const Sidebar = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
+  const sidebarFadeInVariant = {
+    unhidden: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: 0.4,
+      },
+    },
+    hidden: { opacity: 0, x: "-3rem" },
+  };
+
   return (
-    <div className='fixed min-w-screen bottom-0 left-0 right-0 bg-gray-120 border-t border-t-gray-300 z-10 md:top-0 md:right-[unset] md:max-w-[6rem] md:min-h-screen md:border-0 md:border-r dark:bg-[#242424]'>
+    <motion.div
+      variants={sidebarFadeInVariant}
+      initial='hidden'
+      animate='unhidden'
+      className='fixed min-w-screen bottom-0 left-0 right-0 bg-gray-120 border-t border-t-gray-300 z-10 md:top-0 md:right-[unset] md:max-w-[6rem] md:min-h-screen md:border-0 md:border-r dark:bg-[#242424]'
+    >
       <nav className='flex items-center pl-4 md:flex-col md:p-0 md:py-4 md:justify-start  md:h-full'>
         <div className='h-fit min-w-[4rem] pr-4 border-r md:mx-auto md:border-0 md:w-fit md:place-self-center md:p-0 md:pb-[1.65rem] md:min-w-0 md:h-fit md:pt-1'>
           <img src='/logo.png' alt='Logo' className='w-10 h-10' />
@@ -102,6 +119,6 @@ export const Sidebar = () => {
           </ul>
         </ul>
       </nav>
-    </div>
+    </motion.div>
   );
 };
