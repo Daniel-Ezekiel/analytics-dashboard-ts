@@ -12,6 +12,8 @@ import { PlatformDetails } from "../components/PlatformDetails";
 import OrdersTable from "../components/OrdersTable";
 import { formatDate } from "../../util/formatDate";
 import { Sidebar } from "../components/Sidebar";
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -19,6 +21,8 @@ interface MainLayoutProps {
 }
 
 export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <>
       <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] transition-all ease-in-out duration-300 text-base pb-[8rem] md:pb-3'>
@@ -27,14 +31,18 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
           <Header />
           <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
             {children}
-            <span className='place-self-end flex items-center gap-2 md:hidden'>
-              <Calendar1 size='24' color='#292d32' variant='Outline' />
+            <span className='place-self-end flex items-center gap-2 md:col-span-full lg:hidden dark:text-white'>
+              <Calendar1
+                size='24'
+                color={`${theme === "dark" ? "#fff" : "#292d32"}`}
+                variant='Outline'
+              />
               {formatDate()}
             </span>
 
-            <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:text-white'>
+            <section className='flex flex-wrap justify-between items-center gap-4 p-3 bg-white border border-gray-200 rounded-xl lg:col-span-7 dark:bg-black dark:text-white'>
               <h2 className='font-semibold text-lg'>Sales Trend</h2>
-              <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm'>
+              <div className='flex items-center gap-2 font-medium text-sm'>
                 <span>Sort by:</span>
                 <select
                   name='sort-value'
@@ -45,7 +53,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
                 </select>
               </div>
 
-              <div className='col-span-full'>
+              <div className='w-full'>
                 <img
                   src='/chart.png'
                   alt='Sales chart'
@@ -54,7 +62,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               </div>
             </section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto dark:bg-black'>
+            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black'>
               <div className='flex justify-between'>
                 <h2 className='font-semibold dark:text-white'>Last orders</h2>
                 <MemoryRouter>
@@ -109,7 +117,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               </SummaryCard>
             </section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8 dark:bg-black'>
+            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black'>
               <div className='flex justify-between'>
                 <h2 className='font-semibold dark:text-white'>Top Platform</h2>
                 <MemoryRouter>

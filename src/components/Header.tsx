@@ -29,15 +29,19 @@ export const Header = () => {
   };
 
   return (
-    <header className='sm:col-start-2'>
+    <header>
       <nav className='relative p-4 flex justify-between items-center gap-4 border-b border-b-gray-200'>
         <h1 className='font-semibold text-xl md:text-xl dark:text-white'>
           Dashboard
         </h1>
-        <div className='flex stretch gap-3 md:gap-4 lg:w-[80%] lg:gap-8'>
-          <div className='w-fit h-fit flex place-self-center items-center gap-2 sm:p-2 sm:border sm:border-gray-600 sm:bg-white sm:rounded-full lg:ml-auto lg:w-[22rem] xl:w-[30rem]'>
+        <div className='flex stretch gap-3 md:gap-4 lg:w-[80%] lg:gap-6'>
+          <div className='w-fit h-fit flex place-self-center items-center gap-2 sm:p-2 sm:border sm:border-gray-600 sm:bg-white sm:rounded-full lg:ml-auto lg:w-[15rem] xl:w-[25rem]'>
             <button type='button' onClick={toggleSearch}>
-              <SearchNormal1 size='24' color='#78828A' variant='Outline' />
+              <SearchNormal1
+                size='24'
+                color={`${theme === "dark" ? "#A3A3A3" : "#787878"}`}
+                variant='Outline'
+              />
             </button>
             <input
               type='text'
@@ -48,7 +52,7 @@ export const Header = () => {
             />
           </div>
 
-          <span className='hidden place-self-center items-center gap-1 md:flex lg:gap-2 dark:text-white'>
+          <span className='hidden place-self-center items-center gap-1 lg:flex lg:gap-2 dark:text-white'>
             <Calendar1
               size='24'
               color={`${theme === "dark" ? "#fff" : "#292d32"}`}
@@ -76,7 +80,11 @@ export const Header = () => {
               <span className='text-sm'>justin@gmail.com</span>
             </div>
             <button>
-              <ArrowDown2 size='15' color='#292d32' variant='Outline' />
+              <ArrowDown2
+                size='15'
+                color={`${theme === "dark" ? "#fff" : "#292d32"}`}
+                variant='Outline'
+              />
             </button>
           </div>
         </div>

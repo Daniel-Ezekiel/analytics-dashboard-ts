@@ -24,10 +24,10 @@ export const Sidebar = () => {
   return (
     <div className='fixed min-w-screen bottom-0 left-0 right-0 bg-gray-120 border-t border-t-gray-300 z-10 md:top-0 md:right-[unset] md:max-w-[6rem] md:min-h-screen md:border-0 md:border-r dark:bg-[#242424]'>
       <nav className='flex items-center pl-4 md:flex-col md:p-0 md:py-4 md:justify-start  md:h-full'>
-        <ul className=' flex justify-between items-center overflow-auto gap-8 md:flex-col md:justify-start md:gap-8 md:h-full'>
-          <div className='w-[7rem] h-fit pr-4 border-r md:mx-auto md:border-0 md:w-fit md:place-self-center md:p-0 md:h-fit md:pt-1'>
-            <img src='/logo.png' alt='Logo' className='w-10 h-10' />
-          </div>
+        <div className='h-fit min-w-[4rem] pr-4 border-r md:mx-auto md:border-0 md:w-fit md:place-self-center md:p-0 md:pb-[1.65rem] md:min-w-0 md:h-fit md:pt-1'>
+          <img src='/logo.png' alt='Logo' className='w-10 h-10' />
+        </div>
+        <ul className=' flex justify-between items-center overflow-auto gap-8 px-4 md:flex-col md:justify-start md:gap-8 md:h-full md:pt-4 md:px-0'>
           <li className='py-5 md:py-0 md:px-8'>
             <Category
               size={28}
@@ -89,7 +89,7 @@ export const Sidebar = () => {
             </div>
           </div>
 
-          <ul className='flex gap-5 sm:flex-col md:mt-8 md:pb-4'>
+          <ul className='flex gap-5 md:flex-col md:mt-8 md:pb-4'>
             <li className='py-5 md:py-0 md:px-8'>
               <ArrowCircleRight2 size={28} color='#b2abab' variant='Broken' />
             </li>
