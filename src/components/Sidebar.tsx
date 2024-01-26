@@ -22,14 +22,18 @@ export const Sidebar = () => {
   };
 
   return (
-    <div className='fixed min-w-screen bottom-0 left-0 right-0 bg-gray-120 border border-t-gray-300 z-10 md:top-0 md:right-[unset] md:max-w-[6rem] md:min-h-screen'>
+    <div className='fixed min-w-screen bottom-0 left-0 right-0 bg-gray-120 border-t border-t-gray-300 z-10 md:top-0 md:right-[unset] md:max-w-[6rem] md:min-h-screen md:border-0 md:border-r dark:bg-[#242424]'>
       <nav className='flex items-center pl-4 md:flex-col md:p-0 md:py-4 md:justify-start  md:h-full'>
         <ul className=' flex justify-between items-center overflow-auto gap-8 md:flex-col md:justify-start md:gap-8 md:h-full'>
           <div className='w-[7rem] h-fit pr-4 border-r md:mx-auto md:border-0 md:w-fit md:place-self-center md:p-0 md:h-fit md:pt-1'>
             <img src='/logo.png' alt='Logo' className='w-10 h-10' />
           </div>
           <li className='py-5 md:py-0 md:px-8'>
-            <Category size={28} color='#0d062d' variant='Bulk' />
+            <Category
+              size={28}
+              color={`${theme === "light" ? "#292d32" : "#b2abab"}`}
+              variant='Bulk'
+            />
           </li>
 
           <li className='py-5 md:py-0 md:px-8'>
@@ -54,7 +58,7 @@ export const Sidebar = () => {
 
           <div className='px-8 border-x border-gray-300 md:border-y md:border-x-0 md:p-0 md:py-8 md:mb-auto'>
             <div
-              className='flex gap-4 bg-white p-2 rounded-full border border-gray-280 md:flex-col'
+              className='flex gap-4 bg-white p-2 rounded-full border border-gray-280 md:flex-col dark:bg-[#313131]'
               // eslint-disable-next-line @typescript-eslint/no-explicit-any
               onClick={toggleTheme}
             >

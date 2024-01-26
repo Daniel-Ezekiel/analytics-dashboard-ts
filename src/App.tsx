@@ -16,8 +16,6 @@ function App() {
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
     }
-
-    console.log(theme);
   }, [theme]);
 
   return (

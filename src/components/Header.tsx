@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { formatDate } from "../../util/formatDate";
 import {
   ArrowDown2,
@@ -6,8 +6,10 @@ import {
   Notification,
   SearchNormal1,
 } from "iconsax-react";
+import { ThemeContext } from "../../contexts/ThemeContext";
 
 export const Header = () => {
+  const { theme } = useContext(ThemeContext);
   const [searchTerm, setSearchTerm] = useState<string>("");
   const [inputShown, setInputShown] = useState<boolean>(false);
 
@@ -46,22 +48,30 @@ export const Header = () => {
             />
           </div>
 
-          <span className='hidden place-self-center items-center gap-1 md:flex lg:gap-2'>
-            <Calendar1 size='24' color='#292d32' variant='Outline' />
+          <span className='hidden place-self-center items-center gap-1 md:flex lg:gap-2 dark:text-white'>
+            <Calendar1
+              size='24'
+              color={`${theme === "dark" ? "#fff" : "#292d32"}`}
+              variant='Outline'
+            />
             {formatDate()}
           </span>
 
           <button className='col-start-2 row-start-1 place-self-center w-fit h-fit border border-gray-300 p-2 rounded-full'>
-            <Notification size='24' color='#292d32' variant='Outline' />
+            <Notification
+              size='24'
+              color={`${theme === "dark" ? "#fff" : "#292d32"}`}
+              variant='Outline'
+            />
           </button>
 
-          <div className='w-fit place-self-end p-1 flex gap-1 border border-gray-600 rounded-full md:gap-2'>
+          <div className='w-fit place-self-end p-1 flex items-center gap-1 border border-gray-600 rounded-full md:gap-2'>
             <img
               src='/profile.jpg'
               alt='Profile picture'
-              className='w-8 h-8 object-cover object-center rounded-full md:w-10 md:h-10'
+              className='w-8 h-8 object-cover object-center rounded-full md:w-10 md:h-10 border'
             />
-            <div className='hidden flex-col lg:flex'>
+            <div className='hidden flex-col items-end lg:flex dark:text-white'>
               <span>Justin Bergson</span>
               <span className='text-sm'>justin@gmail.com</span>
             </div>

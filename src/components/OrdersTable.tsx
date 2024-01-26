@@ -5,7 +5,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { DocumentDownload } from "iconsax-react";
+import { useContext } from "react";
 import { Link, MemoryRouter } from "react-router-dom";
+import { ThemeContext } from "../../contexts/ThemeContext";
 // import Paper from "@mui/material/Paper";
 
 function createData(
@@ -63,6 +65,8 @@ const rows = [
 ];
 
 export default function BasicTable() {
+  const { theme } = useContext(ThemeContext);
+
   return (
     <TableContainer>
       <Table
@@ -138,6 +142,7 @@ export default function BasicTable() {
                   alignItems: "center",
                   gap: "0.75rem",
                 }}
+                className='dark:text-white'
               >
                 <img
                   src={row.profileImgURL}
@@ -152,6 +157,7 @@ export default function BasicTable() {
                   fontSize: "1rem",
                   color: "#737373",
                 }}
+                className='dark:text-gray-400'
               >
                 {row.date}
               </TableCell>
@@ -162,6 +168,7 @@ export default function BasicTable() {
                   color: "#0D062D",
                   fontWeight: "500",
                 }}
+                className='dark:text-white'
               >
                 {row.currency}
                 {row.amount}
@@ -188,11 +195,11 @@ export default function BasicTable() {
                 <MemoryRouter>
                   <Link
                     to='/'
-                    className='flex items-center gap-2 text-dark hover:text-green hover:underline'
+                    className='flex items-center gap-2 text-dark hover:text-green hover:underline dark:text-gray-200'
                   >
                     <DocumentDownload
                       size='24'
-                      color='#292d32'
+                      color={`${theme === "light" ? "#292d32" : "#fff"}`}
                       variant='Outline'
                     />
                     View

@@ -32,14 +32,14 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               {formatDate()}
             </span>
 
-            <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7'>
+            <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:text-white'>
               <h2 className='font-semibold text-lg'>Sales Trend</h2>
               <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm'>
                 <span>Sort by:</span>
                 <select
                   name='sort-value'
                   id='sort-value'
-                  className='px-2 py-1 border border-gray-600 rounded-full text-[0.75rem]'
+                  className='px-2 py-1 border border-gray-600 rounded-full text-[0.75rem] dark:text-dark'
                 >
                   <option value='week'>Weekly</option>
                 </select>
@@ -54,9 +54,9 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               </div>
             </section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto'>
+            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto dark:bg-black'>
               <div className='flex justify-between'>
-                <h2 className='font-semibold'>Last orders</h2>
+                <h2 className='font-semibold dark:text-white'>Last orders</h2>
                 <MemoryRouter>
                   <Link to={""} className='font-medium text-green'>
                     See all
@@ -64,7 +64,6 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
                 </MemoryRouter>
               </div>
 
-              {/* <div><OrdersTable /></div> */}
               <OrdersTable />
             </section>
 
@@ -110,9 +109,9 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               </SummaryCard>
             </section>
 
-            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8'>
+            <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8 dark:bg-black'>
               <div className='flex justify-between'>
-                <h2 className='font-semibold'>Top Platform</h2>
+                <h2 className='font-semibold dark:text-white'>Top Platform</h2>
                 <MemoryRouter>
                   <Link to={""} className='font-medium text-green'>
                     See all
