@@ -24,6 +24,14 @@ export default {
       fontFamily: {
         sans: ["Plus Jakarta Sans", "Inter", "sans-serif"],
       },
+      screens: {
+        sm: "540px",
+        sm2: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1440px",
+      },
     },
   },
   plugins: [],

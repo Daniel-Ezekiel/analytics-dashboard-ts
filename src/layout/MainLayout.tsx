@@ -1,9 +1,16 @@
-import { BoxTick, Coin1, I3DRotate, ShoppingCart } from "iconsax-react";
+import {
+  BoxTick,
+  Calendar1,
+  Coin1,
+  I3DRotate,
+  ShoppingCart,
+} from "iconsax-react";
 import { Header } from "../components/Header";
 import { SummaryCard } from "../components/SummaryCard";
 import { Link, MemoryRouter } from "react-router-dom";
 import { PlatformDetails } from "../components/PlatformDetails";
 import OrdersTable from "../components/OrdersTable";
+import { formatDate } from "../../util/formatDate";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -18,6 +25,10 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
         <Header />
         <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
           {children}
+          <span className='place-self-end flex items-center gap-2 md:hidden'>
+            <Calendar1 size='24' color='#292d32' variant='Outline' />
+            {formatDate()}
+          </span>
 
           <section className='grid grid-cols-2 gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7'>
             <h2 className='font-semibold text-lg'>Sales Trend</h2>
@@ -41,7 +52,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </div>
           </section>
 
-          <section className='p-4 bg-white rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto'>
+          <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:col-span-7 overflow-x-auto'>
             <div className='flex justify-between'>
               <h2 className='font-semibold'>Last orders</h2>
               <MemoryRouter>
@@ -97,7 +108,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
             </SummaryCard>
           </section>
 
-          <section className='p-4 bg-white rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8'>
+          <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:col-span-5 lg:col-start-8'>
             <div className='flex justify-between'>
               <h2 className='font-semibold'>Top Platform</h2>
               <MemoryRouter>
