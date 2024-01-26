@@ -1,11 +1,9 @@
 import { createContext } from "react";
 
-export interface ThemeContextProps {
-  theme: string;
-  setTheme: (theme: string) => void;
-}
+// export interface ThemeContextProps {
+//   theme: string;
+//   setTheme: (theme: string) => void;
+// }
 
-export const ThemeContext = createContext<ThemeContextProps>({
-  theme: "light",
-  setTheme: () => {},
-});
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const ThemeContext = createContext<any>({});

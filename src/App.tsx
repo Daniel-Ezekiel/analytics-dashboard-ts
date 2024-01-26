@@ -4,13 +4,12 @@ import "./App.css";
 import { MainLayout } from "./layout/MainLayout";
 
 function App() {
-  // const { theme } = useContext(ThemeContext);
-  const [currTheme, setCurrTheme] = useState<string>("light");
+  const [theme, setTheme] = useState<string>("light");
   // console.log(currTheme);
 
   useEffect(() => {
     // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (currTheme === "light") {
+    if (theme === "light") {
       localStorage.theme = "light";
       document.documentElement.classList.remove("dark");
     } else {
@@ -18,14 +17,12 @@ function App() {
       document.documentElement.classList.add("dark");
     }
 
-    console.log(localStorage.theme);
-  }, [currTheme]);
+    console.log(theme);
+  }, [theme]);
 
   return (
     <>
-      <ThemeContext.Provider
-        value={{ theme: currTheme, setTheme: setCurrTheme }}
-      >
+      <ThemeContext.Provider value={{ theme, setTheme }}>
         <MainLayout showDashboard={true}></MainLayout>
       </ThemeContext.Provider>
     </>

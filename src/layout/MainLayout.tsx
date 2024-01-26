@@ -21,9 +21,9 @@ interface MainLayoutProps {
 export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
   return (
     <>
-      <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] transition-all ease-in-out duration-300 text-base pb-[8rem] sm:pb-3'>
+      <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] transition-all ease-in-out duration-300 text-base pb-[8rem] md:pb-3'>
         {showDashboard && <Sidebar />}
-        <div className='sm:ml-[6rem]'>
+        <div className='md:ml-[6rem]'>
           <Header />
           <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
             {children}
