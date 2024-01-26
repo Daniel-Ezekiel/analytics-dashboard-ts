@@ -3,7 +3,6 @@ import { formatDate } from "../../util/formatDate";
 import {
   ArrowDown2,
   Calendar1,
-  HambergerMenu,
   Notification,
   SearchNormal1,
 } from "iconsax-react";
@@ -28,9 +27,11 @@ export const Header = () => {
   };
 
   return (
-    <header>
-      <nav className='relative p-4 flex justify-between items-center gap-4 border border-b-gray-200'>
-        <h1 className='font-semibold text-xl md:text-xl'>Dashboard</h1>
+    <header className='sm:col-start-2'>
+      <nav className='relative p-4 flex justify-between items-center gap-4 border-b border-b-gray-200'>
+        <h1 className='font-semibold text-xl md:text-xl dark:text-white'>
+          Dashboard
+        </h1>
         <div className='flex stretch gap-3 md:gap-4 lg:w-[80%] lg:gap-8'>
           <div className='w-fit h-fit flex place-self-center items-center gap-2 sm:p-2 sm:border sm:border-gray-600 sm:bg-white sm:rounded-full lg:ml-auto lg:w-[22rem] xl:w-[30rem]'>
             <button type='button' onClick={toggleSearch}>
@@ -69,9 +70,6 @@ export const Header = () => {
             </button>
           </div>
         </div>
-        <button className='hidden place-self-center'>
-          <HambergerMenu size='24' color='#292d32' variant='Broken' />
-        </button>{" "}
       </nav>
     </header>
   );

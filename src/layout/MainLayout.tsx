@@ -11,7 +11,6 @@ import { Link, MemoryRouter } from "react-router-dom";
 import { PlatformDetails } from "../components/PlatformDetails";
 import OrdersTable from "../components/OrdersTable";
 import { formatDate } from "../../util/formatDate";
-import { Fragment } from "react";
 import { Sidebar } from "../components/Sidebar";
 
 interface MainLayoutProps {
@@ -22,9 +21,9 @@ interface MainLayoutProps {
 export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
   return (
     <>
-      <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] dark:text-white transition-all ease-in-out duration-300 text-base mb-[8rem]'>
+      <div className='min-h-screen max-w-screen bg-gray-100 text-dark dark:bg-[#242424] transition-all ease-in-out duration-300 text-base pb-[8rem] sm:pb-3'>
         {showDashboard && <Sidebar />}
-        <Fragment>
+        <div className='ml-[6rem]'>
           <Header />
           <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
             {children}
@@ -158,7 +157,7 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
               />
             </section>
           </main>
-        </Fragment>
+        </div>
         {/* <footer>Footer</footer> */}
       </div>
     </>
