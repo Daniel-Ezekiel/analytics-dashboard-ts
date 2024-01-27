@@ -68,7 +68,7 @@ export default function BasicTable() {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <TableContainer>
+    <TableContainer className='scrollbar-hide'>
       <Table
         sx={{ minWidth: 650 }}
         aria-label='simple table'

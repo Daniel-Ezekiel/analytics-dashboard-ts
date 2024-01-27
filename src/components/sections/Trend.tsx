@@ -74,9 +74,9 @@ export const Trend = () => {
   };
 
   return (
-    <section className='max-h-[30rem] overflow-x-auto flex flex-wrap justify-between items-start gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:border-gray-500 dark:text-white shadow-sm'>
+    <section className='max-h-[30rem] grid grid-cols-2 justify-between items-start gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:border-gray-500 dark:text-white shadow-sm'>
       <h2 className='font-semibold text-lg'>Sales Trend</h2>
-      <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm lg:place-self-start'>
+      <div className='w-full flex justify-end items-center gap-2 place-self-end font-medium text-sm lg:place-self-start'>
         <span>Sort by:</span>
         <select
           name='sort-value'
@@ -87,9 +87,11 @@ export const Trend = () => {
         </select>
       </div>
 
-      <div id='chart' className='min-w-[40rem] max-h-fit sm:min-w-full'>
-        {/* <img src='/chart.png' alt='Sales chart' className='h-auto w-full' /> */}
-        <Chart options={options} type='bar' series={series} height={360} />
+      <div className='chart-parent col-span-full flex w-full overflow-x-auto scrollbar-hide'>
+        <div id='chart' className='min-w-[40rem] max-h-fit sm:min-w-full'>
+          {/* <img src='/chart.png' alt='Sales chart' className='h-auto w-full' /> */}
+          <Chart options={options} type='bar' series={series} height={360} />
+        </div>
       </div>
     </section>
   );

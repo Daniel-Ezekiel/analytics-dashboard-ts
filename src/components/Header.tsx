@@ -127,7 +127,7 @@ export const Header = () => {
                 color={`${theme === "dark" ? "#fff" : "#292d32"}`}
                 variant='Outline'
               />
-              <div className='hidden absolute top-10 right-0 w-[12rem] border border-gray-500 rounded-lg bg-white shadow-lg flex-col justify-start'>
+              <div className='hidden absolute top-10 right-0 w-[12rem] border border-gray-500 rounded-lg bg-white shadow-lg flex-col justify-start dark:bg-black dark:text-white'>
                 <div className='border-b p-4 flex flex-col items-end lg:hidden dark:text-white'>
                   <span className='font-semibold'>Justin Bergson</span>
                   <span className='text-sm'>justin@gmail.com</span>

@@ -60,7 +60,7 @@ export const Sidebar = () => {
         <div className='h-fit min-w-[4rem] pr-4 border-r md:mx-auto md:border-0 md:w-fit md:place-self-center md:p-0 md:pb-[1.65rem] md:min-w-0 md:h-fit md:pt-1'>
           <img src='/logo.png' alt='Logo' className='w-10 h-10' />
         </div>
-        <ul className=' flex justify-between items-center overflow-auto gap-8 px-4 md:flex-col md:justify-start md:gap-6 md:h-full md:pt-4 md:px-0'>
+        <ul className=' flex justify-between items-center overflow-auto gap-8 px-4 md:flex-col md:justify-start md:gap-6 md:h-full md:pt-4 md:px-0 scrollbar-hide'>
           <li
             className='py-5 border-t-4 border-green md:py-0 md:px-8 md:border-t-0 md:border-r-4 transition-all ease-in-out cursor-pointer'
             onClick={switchActivePage}
