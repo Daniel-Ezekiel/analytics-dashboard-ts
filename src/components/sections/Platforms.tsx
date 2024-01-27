@@ -3,7 +3,7 @@ import { PlatformDetails } from "../PlatformDetails";
 
 export const Platforms = () => {
   return (
-    <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black'>
+    <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black shadow-sm'>
       <div className='flex justify-between'>
         <h2 className='font-semibold dark:text-white'>Top Platform</h2>
         <MemoryRouter>

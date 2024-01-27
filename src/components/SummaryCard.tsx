@@ -16,7 +16,7 @@ export const SummaryCard = ({
   chartImageURL,
 }: SummaryCardProps) => {
   return (
-    <div className='flex flex-wrap justify-between gap-3 p-4 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-1 dark:bg-black'>
+    <div className='flex flex-wrap justify-between gap-3 p-4 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-1 dark:bg-black shadow-sm hover:bg-gray-200 hover:bg-opacity-50 dark:hover:bg-white-100 dark:hover:bg-opacity-10'>
       <div className='w-full flex justify-between gap-7'>
         <div className='border border-gray-250 rounded-full p-2'>
           {children}

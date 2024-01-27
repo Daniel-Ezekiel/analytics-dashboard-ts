@@ -16,7 +16,7 @@ export const PlatformDetails = ({
   platformRate,
 }: PlatformDetailsProps) => {
   return (
-    <div className='grid grid-cols-2 justify-between items-between gap-4 text-lg'>
+    <div className='grid grid-cols-2 p-2 justify-between items-between gap-4 text-lg hover:bg-gray-200 hover:bg-opacity-50 dark:hover:bg-white-100 dark:hover:bg-opacity-10'>
       <h4 className='font-semibold dark:text-white'>{platformName}</h4>
       <div className={`relative col-span-full bg-gray-150 rounded-full h-3`}>
         <div

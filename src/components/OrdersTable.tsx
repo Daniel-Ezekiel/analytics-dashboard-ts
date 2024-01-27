@@ -129,6 +129,7 @@ export default function BasicTable() {
             <TableRow
               key={row.name + ` ${i}`}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+              className='hover:bg-gray-200 hover:bg-opacity-50 dark:hover:bg-white dark:hover:bg-opacity-10'
             >
               <TableCell
                 component='th'
