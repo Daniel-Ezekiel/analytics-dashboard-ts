@@ -3,7 +3,7 @@ import OrdersTable from "../OrdersTable";
 
 export const Orders = () => {
   return (
-    <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black shadow-sm'>
+    <section className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black dark:border-gray-500 shadow-sm'>
       <div className='flex justify-between'>
         <h2 className='font-semibold dark:text-white'>Last orders</h2>
         <MemoryRouter>

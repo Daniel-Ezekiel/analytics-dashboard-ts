@@ -29,6 +29,17 @@ export const Header = () => {
     }
   };
 
+  const toggleNotificationModal = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+
+    e.currentTarget.querySelector("div")?.classList.toggle("hidden");
+  };
+  const toggleProfileDropdown = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.preventDefault();
+
+    e.currentTarget.querySelector("button div")?.classList.toggle("hidden");
+  };
+
   const headerFadeInVariant = {
     unhidden: {
       opacity: 1,
@@ -46,7 +57,7 @@ export const Header = () => {
       initial='hidden'
       animate='unhidden'
     >
-      <nav className='relative p-4 flex justify-between items-center gap-4 border-b border-b-gray-200'>
+      <nav className='relative p-4 flex justify-between items-center gap-4 border-b border-b-gray-300'>
         <h1 className='font-semibold text-xl md:text-xl dark:text-white'>
           Dashboard
         </h1>
@@ -77,30 +88,57 @@ export const Header = () => {
             {formatDate()}
           </span>
 
-          <button className='col-start-2 row-start-1 place-self-center w-fit h-fit border border-gray-300 p-2 rounded-full'>
+          <button
+            className='relative col-start-2 row-start-1 place-self-center w-fit h-fit border border-gray-300 p-2 rounded-full'
+            onClick={toggleNotificationModal}
+          >
             <Notification
               size='24'
               color={`${theme === "dark" ? "#fff" : "#292d32"}`}
               variant='Outline'
             />
+            <div className='hidden absolute w-[12rem] right-0 top-[3rem] bg-white border border-gray-300 rounded-lg shadow-lg dark:border dark:border-gray-500 dark:bg-black dark:text-white md:w-[20rem]'>
+              <p className='border-b border-gray-500 p-4 font-semibold'>
+                Notifications
+              </p>
+
+              <div className='p-2'>
+                <p>No notifications to show.</p>
+              </div>
+            </div>
           </button>
 
-          <div className='w-fit place-self-end p-1 flex items-center gap-1 border border-gray-600 rounded-full md:gap-2'>
+          <div
+            className='w-fit place-self-end p-1 flex items-center gap-1 border border-gray-600 rounded-full cursor-pointer md:gap-2'
+            onClick={toggleProfileDropdown}
+          >
             <img
               src='/profile.jpg'
               alt='Profile picture'
               className='w-8 h-8 object-cover object-center rounded-full md:w-10 md:h-10 border'
             />
             <div className='hidden flex-col items-end lg:flex dark:text-white'>
-              <span>Justin Bergson</span>
+              <span className='font-semibold'>Justin Bergson</span>
               <span className='text-sm'>justin@gmail.com</span>
             </div>
-            <button>
+            <button className='relative'>
               <ArrowDown2
-                size='15'
+                size='18'
                 color={`${theme === "dark" ? "#fff" : "#292d32"}`}
                 variant='Outline'
               />
+              <div className='hidden absolute top-10 right-0 w-[12rem] border border-gray-500 rounded-lg bg-white shadow-lg flex-col justify-start'>
+                <div className='border-b p-4 flex flex-col items-end lg:hidden dark:text-white'>
+                  <span className='font-semibold'>Justin Bergson</span>
+                  <span className='text-sm'>justin@gmail.com</span>
+                </div>
+                <span
+                  className='block p-3 font-semibold text-start'
+                  role='button'
+                >
+                  View profile
+                </span>
+              </div>
             </button>
           </div>
         </div>
