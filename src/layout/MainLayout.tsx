@@ -1,20 +1,14 @@
-import {
-  BoxTick,
-  Calendar1,
-  Coin1,
-  I3DRotate,
-  ShoppingCart,
-} from "iconsax-react";
+import { Calendar1 } from "iconsax-react";
 import { Header } from "../components/Header";
-import { SummaryCard } from "../components/SummaryCard";
-import { Link, MemoryRouter } from "react-router-dom";
-import { PlatformDetails } from "../components/PlatformDetails";
-import OrdersTable from "../components/OrdersTable";
 import { formatDate } from "../../util/formatDate";
 import { Sidebar } from "../components/Sidebar";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { motion } from "framer-motion";
+import { Trend } from "../components/sections/Trend";
+import { Orders } from "../components/sections/Orders";
+import { Platforms } from "../components/sections/Platforms";
+import { Summary } from "../components/sections/Summary";
 
 interface MainLayoutProps {
   showDashboard: boolean;
@@ -41,166 +35,27 @@ export const MainLayout = ({ showDashboard, children }: MainLayoutProps) => {
         {showDashboard && <Sidebar />}
         <div className='md:ml-[6rem]'>
           <Header />
-          <main className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'>
+          <motion.main
+            variants={sectionFadeInVariant}
+            initial='hidden'
+            animate='unhidden'
+            className='mt-4 grid p-4 gap-5 md:grid-cols-2 lg:grid-cols-12'
+          >
             {children}
-            <motion.span
-              variants={sectionFadeInVariant}
-              initial='hidden'
-              animate='unhidden'
-              className='place-self-end flex items-center gap-2 md:col-span-full lg:hidden dark:text-white'
-            >
+            <span className='place-self-end flex items-center gap-2 md:col-span-full lg:hidden dark:text-white'>
               <Calendar1
                 size='24'
                 color={`${theme === "dark" ? "#fff" : "#292d32"}`}
                 variant='Outline'
               />
               {formatDate()}
-            </motion.span>
+            </span>
 
-            <motion.section
-              variants={sectionFadeInVariant}
-              initial='hidden'
-              animate='unhidden'
-              className='flex flex-wrap justify-between items-start gap-4 p-3 bg-white border border-gray-200 rounded-xl md:col-span-full lg:col-span-7 dark:bg-black dark:text-white'
-            >
-              <h2 className='font-semibold text-lg'>Sales Trend</h2>
-              <div className='flex items-center gap-2 justify-self-end place-self-center font-medium text-sm lg:place-self-start'>
-                <span>Sort by:</span>
-                <select
-                  name='sort-value'
-                  id='sort-value'
-                  className='px-2 py-1 border border-gray-600 rounded-full text-[0.75rem] dark:text-dark'
-                >
-                  <option value='week'>Weekly</option>
-                </select>
-              </div>
-
-              <div className='w-full h-full'>
-                <img
-                  src='/chart.png'
-                  alt='Sales chart'
-                  className='h-auto w-full'
-                />
-              </div>
-            </motion.section>
-
-            <motion.section
-              variants={sectionFadeInVariant}
-              initial='hidden'
-              animate='unhidden'
-              className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 col-span-full lg:h-fit lg:col-span-7 overflow-x-auto dark:bg-black'
-            >
-              <div className='flex justify-between'>
-                <h2 className='font-semibold dark:text-white'>Last orders</h2>
-                <MemoryRouter>
-                  <Link to={""} className='font-medium text-green'>
-                    See all
-                  </Link>
-                </MemoryRouter>
-              </div>
-
-              <OrdersTable />
-            </motion.section>
-
-            <motion.section
-              variants={sectionFadeInVariant}
-              initial='hidden'
-              animate='unhidden'
-              className='grid gap-4 min-[425px]:grid-cols-2 sm:grid-cols-2 lg:col-span-5 lg:col-start-8 lg:row-start-1'
-            >
-              <SummaryCard
-                cardTitle='Total Order'
-                cardValue={350}
-                cardRate={23.5}
-                isRatePositive={true}
-                chartImageURL='./card-chart-1.png'
-              >
-                <BoxTick size='24' color='#34caa5' variant='Bulk' />
-              </SummaryCard>
-
-              <SummaryCard
-                cardTitle='Total Refund'
-                cardValue={270}
-                cardRate={23.5}
-                isRatePositive={false}
-                chartImageURL='./card-chart-2.png'
-              >
-                <I3DRotate size='24' color='#34caa5' variant='Bulk' />
-              </SummaryCard>
-
-              <SummaryCard
-                cardTitle='Average Sales'
-                cardValue={1567}
-                cardRate={23.5}
-                isRatePositive={false}
-                chartImageURL='./card-chart-2.png'
-              >
-                <ShoppingCart size='24' color='#34caa5' variant='Bulk' />
-              </SummaryCard>
-
-              <SummaryCard
-                cardTitle='Total Income'
-                cardValue={"$350.000"}
-                cardRate={23.5}
-                isRatePositive={true}
-                chartImageURL='./card-chart-1.png'
-              >
-                <Coin1 size='24' color='#34caa5' variant='Bulk' />
-              </SummaryCard>
-            </motion.section>
-
-            <motion.section
-              variants={sectionFadeInVariant}
-              initial='hidden'
-              animate='unhidden'
-              className='p-4 bg-white border border-gray-200 rounded-xl flex flex-col gap-5 lg:h-fit lg:col-span-5 lg:col-start-8 dark:bg-black'
-            >
-              <div className='flex justify-between'>
-                <h2 className='font-semibold dark:text-white'>Top Platform</h2>
-                <MemoryRouter>
-                  <Link to={""} className='font-medium text-green'>
-                    See all
-                  </Link>
-                </MemoryRouter>
-              </div>
-
-              <PlatformDetails
-                platformName='Book Bazaar'
-                barWidth={60}
-                barColor='#6C63FF'
-                currency='$'
-                platformIncome={"2,500,000"}
-                platformRate={15}
-              />
-
-              <PlatformDetails
-                platformName='Artisan Aisle'
-                barWidth={45}
-                barColor='#54C5EB'
-                currency='$'
-                platformIncome={"1,800,000"}
-                platformRate={10}
-              />
-
-              <PlatformDetails
-                platformName='Toy Troop'
-                barWidth='35'
-                barColor='#FFB74A'
-                currency='$'
-                platformIncome={"1,200,000"}
-                platformRate={8}
-              />
-
-              <PlatformDetails
-                platformName='XStore'
-                barWidth='35'
-                barColor='#FF4A55'
-                currency='$'
-                platformIncome={"800,000"}
-                platformRate={6}
-              />
-            </motion.section>
-          </main>
+            <Trend />
+            <Orders />
+            <Summary />
+            <Platforms />
+          </motion.main>
         </div>
         {/* <footer>Footer</footer> */}
       </div>
