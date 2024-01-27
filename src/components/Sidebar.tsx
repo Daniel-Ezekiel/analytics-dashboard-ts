@@ -22,6 +22,22 @@ export const Sidebar = () => {
     theme === "light" ? setTheme("dark") : setTheme("light");
   };
 
+  const switchActivePage = (e: React.MouseEvent<HTMLLIElement>) => {
+    e.preventDefault();
+
+    e.currentTarget
+      .closest("ul")
+      ?.querySelector("li.border-green")
+      ?.classList.remove("border-t-4", "md:border-r-4", "border-green");
+
+    e.currentTarget.classList.add(
+      "border-t-4",
+      "md:border-r-4",
+      "md:border-t-0",
+      "border-green"
+    );
+  };
+
   const sidebarFadeInVariant = {
     unhidden: {
       opacity: 1,
@@ -45,7 +61,10 @@ export const Sidebar = () => {
           <img src='/logo.png' alt='Logo' className='w-10 h-10' />
         </div>
         <ul className=' flex justify-between items-center overflow-auto gap-8 px-4 md:flex-col md:justify-start md:gap-6 md:h-full md:pt-4 md:px-0'>
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 border-t-4 border-green md:py-0 md:px-8 md:border-t-0 md:border-r-4 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <Category
               size={28}
               color={`${theme === "light" ? "#292d32" : "#b2abab"}`}
@@ -53,23 +72,38 @@ export const Sidebar = () => {
             />
           </li>
 
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 md:py-0 md:px-8 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <TrendUp size={28} color='#b2abab' variant='Broken' />
           </li>
 
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 md:py-0 md:px-8 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <Profile2User size={28} color='#b2abab' variant='Broken' />
           </li>
 
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 md:py-0 md:px-8 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <Box size={28} color='#b2abab' variant='Broken' />
           </li>
 
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 md:py-0 md:px-8 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <DiscountShape size={28} color='#b2abab' variant='Broken' />
           </li>
 
-          <li className='py-5 md:py-0 md:px-8'>
+          <li
+            className='py-5 md:py-0 md:px-8 transition-all ease-in-out cursor-pointer'
+            onClick={switchActivePage}
+          >
             <InfoCircle size={28} color='#b2abab' variant='Broken' />
           </li>
 
