@@ -17,7 +17,7 @@ export const Trend = () => {
   ];
 
   const options: ApexOptions = {
-    colors: ["#34CAA53A"],
+    colors: ["#34CAA59A"],
     dataLabels: {
       enabled: false,
     },
@@ -34,6 +34,7 @@ export const Trend = () => {
     },
     chart: {
       id: "trends-bar",
+      foreColor: "#9ca3af",
       fontFamily: "Plus Jakarta Sans",
       toolbar: {
         show: false,
@@ -44,7 +45,7 @@ export const Trend = () => {
         style: {
           fontSize: "14px",
           fontWeight: 500,
-          colors: theme === "light" ? "#000" : "#fff",
+          colors: theme === "light" ? "#000" : "#9ca3af",
         },
       },
     },
@@ -53,7 +54,7 @@ export const Trend = () => {
         style: {
           fontSize: "14px",
           fontWeight: 500,
-          colors: theme === "light" ? "#000" : "#fff",
+          colors: theme === "light" ? "#000" : "#9ca3af",
         },
       },
       categories: [
@@ -87,7 +88,7 @@ export const Trend = () => {
         </select>
       </div>
 
-      <div className='chart-parent col-span-full flex w-full overflow-x-auto scrollbar-hide'>
+      <div className='chart-parent col-span-full flex w-full overflow-x-auto scrollbar-hide dark:text-gray-700'>
         <div id='chart' className='min-w-[40rem] max-h-fit sm:min-w-full'>
           {/* <img src='/chart.png' alt='Sales chart' className='h-auto w-full' /> */}
           <Chart options={options} type='bar' series={series} height={360} />
